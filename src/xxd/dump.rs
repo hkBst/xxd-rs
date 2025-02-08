@@ -123,7 +123,7 @@ impl<'a> OutputLine<'a> {
     }
 
     fn write_address(&self, f: &mut fmt::Formatter) -> Result<usize, anyhow::Error> {
-        write!(f, "{:08.X}: ", self.output_settings.start_address)?;
+        write!(f, "{:08X}: ", self.output_settings.start_address)?;
         Ok(10)
     }
 
@@ -149,15 +149,15 @@ impl<'a> OutputLine<'a> {
     ) -> Result<usize, anyhow::Error> {
         match self.output_settings.output_fmt {
             Format::HexUpperCase => {
-                write!(f, "{:02.X}", byte)?;
+                write!(f, "{:02X}", byte)?;
                 Ok(2)
             }
             Format::Hex => {
-                write!(f, "{:02.x}", byte)?;
+                write!(f, "{:02x}", byte)?;
                 Ok(2)
             }
             Format::Octal => {
-                write!(f, "{:03.o}", byte)?;
+                write!(f, "{:03o}", byte)?;
                 Ok(3)
             }
             Format::Decimal => {
